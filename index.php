@@ -144,7 +144,7 @@
 
 <body>
     <div class="container">
-        <form action="/action_page.php">
+        <form action="login_handler.php" method="post">
             <div class="row">
                 <h2 style="text-align:center">ID CARD GENERATOR</h2>
                 <div class="vl">
@@ -170,7 +170,7 @@
 
                     <input type="text" name="matric" placeholder="Matric" required>
                     <input type="password" name="password" placeholder="Password" required>
-                    <input type="submit" value="Login">
+                    <input type="submit" value="Login" name="login">
                     <a href="register.php" class=" btn" style="text-align:center"><i class="fa fa-login fa-fw">
                         </i> Dont have an account register
                     </a>
