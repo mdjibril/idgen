@@ -9,14 +9,21 @@
         $gender = $_POST['gender'];
         $level = $_POST['level'];
 
+        $success = "Register Successfull";
+        $error = "Error registering";
+
         $sql = "INSERT INTO `user`(`fullname`, `matric_number`, `gender`, `level`, `password`) VALUES('$fullname', '$matric', '$gender','$level', '$password')";
 
         $registerUser = mysqli_query($conn, $sql);
 
         if ($registerUser) {
-            echo "registered successfully";
+            // echo "registered successfully";
+			$_SESSION['success'] = $success;
+            header('location: index.php');
         }else {
-            echo "error";
+            // echo "error";
+			$_SESSION['error'] = $error;
+            header('location: register.php');
         }
     }
 ?>
