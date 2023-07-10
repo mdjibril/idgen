@@ -171,6 +171,9 @@
                     <input type="text" name="matric" placeholder="Matric" required>
                     <input type="password" name="password" placeholder="Password" required>
                     <input type="submit" value="Login">
+                    <a href="register.php" class=" btn" style="text-align:center"><i class="fa fa-login fa-fw">
+                        </i> Dont have an account register
+                    </a>
                 </div>
 
             </div>

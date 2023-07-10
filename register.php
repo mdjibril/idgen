@@ -173,6 +173,7 @@
                     <input type="text" name="fullname" placeholder="Fullname" required>
                     <input type="password" name="password" placeholder="Password" required>
                     <select name="gender" id="">
+                        <option value="">Gender</option>
                         <option value="Male">Male</option>
                         <option value="Male">Female</option>
                     </select>
@@ -184,7 +185,10 @@
                         <option value="400">400-Level</option>
                         <option value="500">500-Level</option>
                     </select>
-                    <input type="submit" value="Login" name="register">
+                    <input type="submit" value="Register" name="register">
+                    <a href="index" class=" btn" style="text-align:center"><i class="fa fa-login fa-fw">
+                        </i> Already have an account Login
+                    </a>
                 </div>
 
             </div>
