@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     require 'connection.php';
 
     if (isset($_POST['register'])) {
@@ -9,7 +10,7 @@
         $gender = $_POST['gender'];
         $level = $_POST['level'];
 
-        $success = "Register Successfull";
+        $success = "Register Successful";
         $error = "Error registering";
 
         $sql = "INSERT INTO `user`(`fullname`, `matric_number`, `gender`, `level`, `password`) VALUES('$fullname', '$matric', '$gender','$level', '$password')";

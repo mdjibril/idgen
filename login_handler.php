@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     require 'connection.php';
 
     if (isset($_POST['login'])) {
@@ -6,17 +7,17 @@
         $matric = $_POST['matric'];
         $password = $_POST['password'];
 
-        $success = "Login Successful";
+        $success = "Welcome";
         $error = "Password or Matric is not correct";
         
         $sql = "SELECT * FROM `user` WHERE `matric_number`='$matric' AND `password`='$password'";
-
         $userLogin = mysqli_query($conn, $sql);
 
         if ($userLogin) {
             // login successful;
 			$_SESSION['success'] = $success;
-            header('location: dashboard.php');
+			$_SESSION['matric'] = $matric;
+            header('location: user/dashboard.php');
         }else {
 			$_SESSION['error'] = $error;
             header('location: index.php');
