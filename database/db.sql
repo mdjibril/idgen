@@ -10,6 +10,8 @@ CREATE TABLE `user`(
     `passport` VARCHAR(255)NOT NULL,
     `level` INT(11)NOT NULL,
     `password` VARCHAR(255)NOT NULL,
+    `request` BOOLEAN DEFAULT 0 NOT NULL,
+    `status` ENUM('approved', 'notapproved')NOT NULL DEFAULT 'notapproved',
     UNIQUE(matric_number)
 );
 
