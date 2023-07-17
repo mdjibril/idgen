@@ -200,8 +200,7 @@ if (!isset($_SESSION['matric'])) {
 
     <div class="sidenav">
         <a href="#">Dashboard</a>
-        <!-- <a href="#">Update</a> -->
-        <button id="myBtn">Update</button>
+        <a href="#" id="myBtn">Update</a>
         <a href="script/logout.php">Logout</a>
     </div>
     <?php
@@ -213,18 +212,28 @@ if (!isset($_SESSION['matric'])) {
         $fullname = $row['fullname'];
         $gender = $row['gender'];
         $level = $row['level'];
+        $passport = $row['passport'];
+        $request = $row['request'];
     ?>
         <div class="main">
             <h2>Welcome <span style="color:#4caf50"><?php echo $fullname ?> </span></h2>
             <?php
-            $checkpassport = "SELECT `passport` FROM `user` WHERE matric_number = '$current_matric'";
-            $verify = mysqli_query($conn, $checkpassport);
-
-            if (!empty($verify)) :
+            if (empty($passport)) :
                 echo "<p>Please click on update to upload your passport</p>";
             else :
-                echo "here are your records";
+                echo "
+                    <p><b>Matric:</b>$current_matric</p>
+                    <p><b>Gender:</b> $gender</p>
+                    <p><b>Level:</b> $level</p>
+                ";
             endif;
+
+            if ($request == '0') {
+                // echo "Click to request for ID Card";
+                echo "Click to <a href='script/request.php?matric=$current_matric'>request</a> for ID Card";
+            }else {
+                echo "Click to print for ID Card";
+            }
             ?>
         </div>
     
@@ -237,7 +246,7 @@ if (!isset($_SESSION['matric'])) {
                 <h2 style="text-align:center">Update Record</h2>
             </div>
             <div class="modal-body">
-                <form action="script/update_handler.php" method="post" style="max-width:500px;margin:auto">
+                <form action="script/update_handler.php" method="post" style="max-width:500px;margin:auto" enctype="multipart/form-data">
                     <div class="input-container">
                         <i class="fa fa-hand-o-right icon"></i>
                         <input class="input-field" type="text" placeholder="Fullname" name="fullname" value="<?php echo $fullname ?>">
