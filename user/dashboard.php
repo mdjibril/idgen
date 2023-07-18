@@ -214,6 +214,7 @@ if (!isset($_SESSION['matric'])) {
         $level = $row['level'];
         $passport = $row['passport'];
         $request = $row['request'];
+        $status = $row['status'];
     ?>
         <div class="main">
             <h2>Welcome <span style="color:#4caf50"><?php echo $fullname ?> </span></h2>
@@ -226,17 +227,17 @@ if (!isset($_SESSION['matric'])) {
                     <p><b>Gender:</b> $gender</p>
                     <p><b>Level:</b> $level</p>
                 ";
-            endif;
 
-            if ($request == '0') {
-                // echo "Click to request for ID Card";
-                echo "Click to <a href='script/request.php?matric=$current_matric'>request</a> for ID Card";
-            }else {
-                echo "Click to print for ID Card";
-            }
+                if ($request == '0') {
+                    echo "Click to <a href='script/request.php?matric=$current_matric'>request</a> for ID Card";
+                }elseif(($request == '1') && ($status == 'notapproved')) {
+                    echo "Your Id Card is been processed, please check back letter";
+                }elseif(($request == '1') && ($status == 'approved')){
+                    echo "Click to <a href='script/idcard.php?matric=$current_matric'>print</a> ID Card";
+                }
+            endif;
             ?>
         </div>
-    
     <!-- The Modal -->
     <div id="myModal" class="modal">
         <!-- Modal content -->
