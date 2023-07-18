@@ -9,7 +9,8 @@
         $updateRequest = mysqli_query($conn, $sql);
 
         if ($updateRequest) {
-            echo "request has been recorded please be patient";
+            // echo "request has been recorded please check back letter";
+            header('location: ../dashboard.php');
         }else {
             echo "error";
         }
