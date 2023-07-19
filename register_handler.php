@@ -11,7 +11,7 @@
         $level = $_POST['level'];
 
         $success = "Register Successful";
-        $error = "Error registering";
+        $error = "Error registering user please try again";
 
         $sql = "INSERT INTO `user`(`fullname`, `matric_number`, `gender`, `level`, `password`) VALUES('$fullname', '$matric', '$gender','$level', '$password')";
 
