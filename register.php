@@ -1,3 +1,8 @@
+<?php
+
+    session_start();
+    require 'connection.php';
+?>
 <!DOCTYPE html>
 <html>
 
@@ -168,7 +173,12 @@
                     <div class="hide-md-lg">
                         <p>Or Register</p>
                     </div>
-
+                    <?php
+                        if (isset($_SESSION['error'])) {
+                            echo "<p style='color:red'>".$_SESSION['error']."</p>";
+                        }
+                    ?>
+                    
                     <input type="text" name="matric" placeholder="Matric" required>
                     <input type="text" name="fullname" placeholder="Fullname" required>
                     <input type="password" name="password" placeholder="Password" required>
@@ -197,3 +207,6 @@
 </body>
 
 </html>
+<?php 
+    unset($_SESSION['error']);
+?>
