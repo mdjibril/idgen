@@ -1,6 +1,6 @@
-<?php 
-    session_start();
-   
+<?php
+session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -172,7 +172,14 @@
                     <div class="hide-md-lg">
                         <p>Or sign in manually:</p>
                     </div>
-
+                    <?php
+                    if (isset($_SESSION['error'])) {
+                        echo "<p style='color:red'>" . $_SESSION['error'] . "</p>";
+                    }
+                    if (isset($_SESSION['success'])) {
+                        echo "<p style='color:#4CAF50'>" . $_SESSION['success'] . "</p>";
+                    }
+                    ?>
                     <input type="text" name="matric" placeholder="Matric" required>
                     <input type="password" name="password" placeholder="Password" required>
                     <input type="submit" value="Login" name="login">
@@ -187,3 +194,7 @@
 </body>
 
 </html>
+<?php
+unset($_SESSION['error']);
+unset($_SESSION['success']);
+?>
