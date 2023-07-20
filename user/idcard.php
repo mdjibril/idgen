@@ -1,0 +1,111 @@
+<?php
+session_start();
+require '../connection.php';
+
+if (!isset($_GET['matric'])) {
+  header('location: ../index.php');
+}
+
+$current_matric = $_GET['matric'];
+$sql = "SELECT * FROM `user` WHERE `matric_number` = $current_matric";
+$getStudent = mysqli_query($conn, $sql);
+
+?>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ID Card</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f4f7fc;
+      font-family: Arial, sans-serif;
+    }
+
+    .id-card {
+      position: relative;
+      width: 400px;
+      height: 250px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: row;
+      border: 2px solid red;
+
+    }
+
+
+
+    .id-card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .id-card .info {
+      /* text-align: center; */
+    }
+
+    .id-card h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: normal;
+    }
+
+    .id-card p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #888;
+    }
+
+    .id-card button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <?php
+  while ($row = mysqli_fetch_array($getStudent)) :
+    $passport = $row['passport'];
+    $matric = $row['matric_number'];
+    $fullname = $row['fullname'];
+    $gender = $row['gender'];
+    $level = $row['level'];
+  ?>
+    <div class="id-card">
+      <img src="<?php echo $passport ?>" alt="User Image">
+      <div class="info">
+        <h3><?php echo $fullname ?></h3>
+        <p>Registration Number: <?php echo $matric ?></p>
+        <p>Level: <?php echo $level ?></p>
+        <p>Gender: <?php echo $gender ?></p>
+      </div>
+      <!-- <button onclick="window.print()">Print ID Card</button> -->
+    </div>
+  <?php
+  endwhile;
+  ?>
+</body>
+
+</html>
