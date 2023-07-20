@@ -21,10 +21,11 @@
 
         $update = mysqli_query($conn, $sql);
         if ($update && $uploadtodb) {
-            echo "Record and passport has been updated";
+            // echo "Record and passport has been updated";
+            $_SESSION['success'] = "Record and passport updated successfully";
+            header('location: ../dashboard.php');
         }else {
             echo "error";
         }
 
     }
-?>
