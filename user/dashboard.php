@@ -8,6 +8,7 @@ if (!isset($_SESSION['matric'])) {
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -45,6 +46,13 @@ if (!isset($_SESSION['matric'])) {
         .main {
             margin-left: 200px;
             /* Same as the width of the sidenav */
+            display: flex;
+            flex-direction: row;
+        }
+
+        div.main>div.pas {
+            margin-top: 23px;
+            margin-left: 77px;
         }
 
         @media screen and (max-height: 450px) {
@@ -217,81 +225,90 @@ if (!isset($_SESSION['matric'])) {
         $status = $row['status'];
     ?>
         <div class="main">
-            <h2>Welcome <span style="color:#4caf50"><?php echo $fullname ?> </span></h2>
-            <?php
-            if (empty($passport)) :
-                echo "<p>Please click on update to upload your passport</p>";
-            else :
-                echo "
+            <div class="info">
+                <h2>Welcome <span style="color:#4caf50"><?php echo $fullname ?> </span></h2>
+                <?php
+                if (empty($passport)) :
+                    echo "<p>Please click on update to upload your passport</p>";
+                else :
+                    echo "
                     <p><b>Matric:</b>$current_matric</p>
                     <p><b>Gender:</b> $gender</p>
                     <p><b>Level:</b> $level</p>
                 ";
 
-                if ($request == '0') {
-                    echo "Click to <a href='script/request.php?matric=$current_matric'>request</a> for ID Card";
-                }elseif(($request == '1') && ($status == 'notapproved')) {
-                    echo "Your Id Card is been processed, please check back letter";
-                }elseif(($request == '1') && ($status == 'approved')){
-                    echo "Click to <a href='script/idcard.php?matric=$current_matric'>print</a> ID Card";
-                }
-            endif;
-            ?>
-        </div>
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="close">&times;</span>
-                <h2 style="text-align:center">Update Record</h2>
+                    if (isset($_SESSION['success'])) {
+                        echo "<p style='color:#4CAF50'>" . $_SESSION['success'] . "</p>";
+                    }
+
+                    if ($request == '0') {
+                        echo "Click to <a href='script/request.php?matric=$current_matric'>request</a> for ID Card";
+                    } elseif (($request == '1') && ($status == 'notapproved')) {
+                        echo "Your Id Card is been processed, please check back letter";
+                    } elseif (($request == '1') && ($status == 'approved')) {
+                        echo "Click to <a href='idcard.php?matric=$current_matric'>print</a> ID Card";
+                    }
+                endif;
+                ?>
             </div>
-            <div class="modal-body">
-                <form action="script/update_handler.php" method="post" style="max-width:500px;margin:auto" enctype="multipart/form-data">
-                    <div class="input-container">
-                        <i class="fa fa-hand-o-right icon"></i>
-                        <input class="input-field" type="text" placeholder="Fullname" name="fullname" value="<?php echo $fullname ?>">
-                    </div>
-
-                    <div class="input-container">
-                        <i class="fa fa-hand-o-right icon"></i>
-                        <input class="input-field" type="text" placeholder="Matric" name="matric" value="<?php echo $current_matric ?>">
-                    </div>
-
-                    <div class="input-container">
-                        <i class="fa fa-hand-o-right icon"></i>
-                        <select name="gender" id="" class="input-field">
-                            <option value="">Select Gender</option>
-                            <option value="Male" <?php if ($gender == "Male") echo "selected"; ?>>Male</option>
-                            <option value="Female" <?php if ($gender == "Female") echo "selected"; ?>>Female</option>
-                        </select>
-                    </div>
-
-                    <div class="input-container">
-                        <i class="fa fa-hand-o-right icon"></i>
-                        <input class="input-field" type="file" placeholder="Passport" name="passport">
-                    </div>
-
-                    <div class="input-container">
-                        <i class="fa fa-hand-o-right icon"></i>
-                        <select name="level" id="" class="input-field">
-                            <option value="">Select Level</option>
-                            <option value="100" <?php if ($level == "100") echo "selected"; ?>>100-Level</option>
-                            <option value="200" <?php if ($level == "200") echo "selected"; ?>>200-Level</option>
-                            <option value="300" <?php if ($level == "300") echo "selected"; ?>>300-Level</option>
-                            <option value="400" <?php if ($level == "400") echo "selected"; ?>>400-Level</option>
-                            <option value="500" <?php if ($level == "500") echo "selected"; ?>>500-Level</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn" name="update">Update Record</button>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <h3>&nbsp;</h3>
+            <div class="pas">
+                <img src="<?php echo $passport ?>" alt="student passport" style="width: 250px; height:250px;">
             </div>
         </div>
-    </div>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2 style="text-align:center">Update Record</h2>
+                </div>
+                <div class="modal-body">
+                    <form action="script/update_handler.php" method="post" style="max-width:500px;margin:auto" enctype="multipart/form-data">
+                        <div class="input-container">
+                            <i class="fa fa-hand-o-right icon"></i>
+                            <input class="input-field" type="text" placeholder="Fullname" name="fullname" value="<?php echo $fullname ?>">
+                        </div>
+
+                        <div class="input-container">
+                            <i class="fa fa-hand-o-right icon"></i>
+                            <input class="input-field" type="text" placeholder="Matric" name="matric" value="<?php echo $current_matric ?>">
+                        </div>
+
+                        <div class="input-container">
+                            <i class="fa fa-hand-o-right icon"></i>
+                            <select name="gender" id="" class="input-field">
+                                <option value="">Select Gender</option>
+                                <option value="Male" <?php if ($gender == "Male") echo "selected"; ?>>Male</option>
+                                <option value="Female" <?php if ($gender == "Female") echo "selected"; ?>>Female</option>
+                            </select>
+                        </div>
+
+                        <div class="input-container">
+                            <i class="fa fa-hand-o-right icon"></i>
+                            <input class="input-field" type="file" placeholder="Passport" name="passport">
+                        </div>
+
+                        <div class="input-container">
+                            <i class="fa fa-hand-o-right icon"></i>
+                            <select name="level" id="" class="input-field">
+                                <option value="">Select Level</option>
+                                <option value="100" <?php if ($level == "100") echo "selected"; ?>>100-Level</option>
+                                <option value="200" <?php if ($level == "200") echo "selected"; ?>>200-Level</option>
+                                <option value="300" <?php if ($level == "300") echo "selected"; ?>>300-Level</option>
+                                <option value="400" <?php if ($level == "400") echo "selected"; ?>>400-Level</option>
+                                <option value="500" <?php if ($level == "500") echo "selected"; ?>>500-Level</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn" name="update">Update Record</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <h3>&nbsp;</h3>
+                </div>
+            </div>
+        </div>
     <?php
     endwhile;
     ?>
@@ -327,3 +344,6 @@ if (!isset($_SESSION['matric'])) {
 <!-- Mirrored from www.w3schools.com/howto/tryit.asp?filename=tryhow_css_sidenav by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Apr 2019 03:50:09 GMT -->
 
 </html>
+<?php
+unset($_SESSION['success']);
+?>

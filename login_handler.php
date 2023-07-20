@@ -13,9 +13,8 @@
         $sql = "SELECT * FROM `user` WHERE `matric_number`='$matric' AND `password`='$password'";
         $userLogin = mysqli_query($conn, $sql);
 
-        if ($userLogin) {
+        if (mysqli_num_rows($userLogin)> 0) {
             // login successful;
-			$_SESSION['success'] = $success;
 			$_SESSION['matric'] = $matric;
             header('location: user/dashboard.php');
         }else {
@@ -23,4 +22,3 @@
             header('location: index.php');
         }
     }
-?>
