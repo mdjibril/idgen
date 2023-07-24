@@ -101,7 +101,7 @@ $getStudent = mysqli_query($conn, $sql);
     .top a {
       text-decoration: none;
       color:white;
-      background-color: #888;
+      /* background-color: #888; */
     }
   </style>
 </head>
