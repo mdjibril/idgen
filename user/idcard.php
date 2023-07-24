@@ -17,9 +17,19 @@ $getStudent = mysqli_query($conn, $sql);
 <head>
   <title>ID Card</title>
   <style>
+    * {
+      border: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
+      padding: 0;
+      margin: 0;
+    }
+    section {
       display: flex;
-      justify-content: center;
+      justify-content: space-around;
       align-items: center;
       height: 100vh;
       background: #f4f7fc;
@@ -27,9 +37,9 @@ $getStudent = mysqli_query($conn, $sql);
     }
 
     .id-card {
-      position: relative;
+      /* position: relative; */
       width: 400px;
-      height: 250px;
+      height: 200px;
       padding: 20px;
       background: rgba(255, 255, 255, 0.15);
       border-radius: 10px;
@@ -46,15 +56,11 @@ $getStudent = mysqli_query($conn, $sql);
 
 
     .id-card img {
-      width: 80px;
-      height: 80px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 10px;
-    }
-
-    .id-card .info {
-      /* text-align: center; */
     }
 
     .id-card h3 {
@@ -81,31 +87,60 @@ $getStudent = mysqli_query($conn, $sql);
       font-size: 14px;
       cursor: pointer;
     }
+
+    .top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      position: fixed;
+      background-color: #007bff;
+      width: 100%;
+    }
+    
+    .top a {
+      text-decoration: none;
+      color:white;
+      background-color: #888;
+    }
   </style>
 </head>
 
 <body>
-  <?php
-  while ($row = mysqli_fetch_array($getStudent)) :
-    $passport = $row['passport'];
-    $matric = $row['matric_number'];
-    $fullname = $row['fullname'];
-    $gender = $row['gender'];
-    $level = $row['level'];
-  ?>
-    <div class="id-card">
-      <img src="<?php echo $passport ?>" alt="User Image">
-      <div class="info">
-        <h3><?php echo $fullname ?></h3>
-        <p>Registration Number: <?php echo $matric ?></p>
-        <p>Level: <?php echo $level ?></p>
-        <p>Gender: <?php echo $gender ?></p>
+  <div class="top">
+    <h1><a href="dashboard.php">Back to Dashboard</a></h1>
+  </div>
+  <section>
+    <?php
+    while ($row = mysqli_fetch_array($getStudent)) :
+      $passport = $row['passport'];
+      $matric = $row['matric_number'];
+      $fullname = $row['fullname'];
+      $gender = $row['gender'];
+      $level = $row['level'];
+    ?>
+      <div class="id-card front">
+        <img src="<?php echo $passport ?>" alt="User Image">
+        <div class="info">
+          <h3><?php echo $fullname ?></h3>
+          <p>Registration Number: <?php echo $matric ?></p>
+          <p>Level: <?php echo $level ?></p>
+          <p>Gender: <?php echo $gender ?></p>
+        </div>
+        <!-- <button onclick="window.print()">Print ID Card</button> -->
       </div>
-      <!-- <button onclick="window.print()">Print ID Card</button> -->
-    </div>
-  <?php
-  endwhile;
-  ?>
+
+      <div class="id-card back">
+        <div class="info">
+          <h3>Back of ID Card</h3>
+          <p>Add more detail here</p>
+        </div>
+        <!-- <button onclick="window.print()">Print ID Card</button> -->
+      </div>
+    <?php
+    endwhile;
+    ?>
+  </section>
 </body>
 
 </html>
