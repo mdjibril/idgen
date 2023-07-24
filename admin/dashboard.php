@@ -57,6 +57,21 @@ if (!isset($_SESSION['username'])) {
                 font-size: 18px;
             }
         }
+
+        .cards {
+            display: flex;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .card {
+            width: 200px;
+            height: 100px;
+            text-align: center;
+            background-color: #4caf50;
+            color: #f1f1f1;
+            margin: 0 20px;
+        }
     </style>
 </head>
 
@@ -79,7 +94,20 @@ if (!isset($_SESSION['username'])) {
     ?>
     <div class="main">
         <h2>Welcome <span style="color:#4caf50"><?php echo $_SESSION['username'] ?> </span></h2>
+        <div class="cards">
+            <div class="card">
 
+            </div>
+            <div class="card">
+
+            </div>
+            <div class="card">
+
+            </div>
+            <div class="card">
+                
+            </div>
+        </div>
     </div>
     <?php
     // endwhile;
