@@ -158,7 +158,7 @@ session_start();
             <div class="row">
                 <h2 style="text-align:center">ID CARD GENERATOR</h2>
                 <div class="vl">
-                    <span class="vl-innertext">or</span>
+                    <span class="vl-innertext"></span>
                 </div>
 
                 <div class="col">
@@ -169,7 +169,7 @@ session_start();
 
                 <div class="col">
                     <div class="hide-md-lg">
-                        <p>Or sign in manually:</p>
+                        <!-- <p>Or sign in manually:</p> -->
                     </div>
                     <?php
                     if (isset($_SESSION['error'])) {

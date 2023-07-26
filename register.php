@@ -159,7 +159,7 @@
             <div class="row">
                 <h2 style="text-align:center">ID CARD GENERATOR</h2>
                 <div class="vl">
-                    <span class="vl-innertext">or</span>
+                    <span class="vl-innertext"></span>
                 </div>
 
                 <div class="col">
@@ -170,7 +170,7 @@
 
                 <div class="col">
                     <div class="hide-md-lg">
-                        <p>Or Register</p>
+                        <!-- <p>Or Register</p> -->
                     </div>
                     <?php
                         if (isset($_SESSION['error'])) {
