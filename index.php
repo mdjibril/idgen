@@ -53,17 +53,7 @@ session_start();
 
         /* add appropriate colors to fb, twitter and google buttons */
         .fb {
-            background-color: #3B5998;
-            color: white;
-        }
-
-        .twitter {
-            background-color: #55ACEE;
-            color: white;
-        }
-
-        .google {
-            background-color: #dd4b39;
+            background-color: #007bff;
             color: white;
         }
 

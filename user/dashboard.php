@@ -24,7 +24,7 @@ if (!isset($_SESSION['matric'])) {
             z-index: 1;
             top: 0;
             left: 0;
-            background-color: #111;
+            background-color: #007bff;
             overflow-x: hidden;
             padding-top: 20px;
         }
@@ -34,7 +34,7 @@ if (!isset($_SESSION['matric'])) {
             padding: 6px 6px 6px 32px;
             text-decoration: none;
             font-size: 25px;
-            color: #818181;
+            color: #ffffff;
             display: block;
         }
 

@@ -54,19 +54,10 @@
 
         /* add appropriate colors to fb, twitter and google buttons */
         .fb {
-            background-color: #3B5998;
+            background-color: #007bff;
             color: white;
         }
 
-        .twitter {
-            background-color: #55ACEE;
-            color: white;
-        }
-
-        .google {
-            background-color: #dd4b39;
-            color: white;
-        }
 
         /* style the submit button */
         input[type=submit] {
