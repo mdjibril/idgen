@@ -144,6 +144,11 @@ session_start();
                 text-align: center;
             }
         }
+
+        #admin {
+            line-height: 120px;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -157,14 +162,8 @@ session_start();
                 </div>
 
                 <div class="col">
-                    <a href="#" class="fb btn">
-                        <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-                    </a>
-                    <a href="#" class="twitter btn">
-                        <i class="fa fa-twitter fa-fw"></i> Login with Twitter
-                    </a>
-                    <a href="#" class="google btn"><i class="fa fa-google fa-fw">
-                        </i> Login with Google+
+                    <a href="#" class="fb btn" id="admin">
+                        <i class="fa fa-user fa-fw"></i> User Login
                     </a>
                 </div>
 
