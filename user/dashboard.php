@@ -272,7 +272,7 @@ if (!isset($_SESSION['matric'])) {
 
                         <div class="input-container">
                             <i class="fa fa-hand-o-right icon"></i>
-                            <input class="input-field" type="text" placeholder="Matric" name="matric" value="<?php echo $current_matric ?>">
+                            <input class="input-field" type="text" placeholder="Matric" name="matric" value="<?php echo $current_matric ?>" readonly>
                         </div>
 
                         <div class="input-container">
