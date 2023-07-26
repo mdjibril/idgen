@@ -23,7 +23,7 @@ $allstudent = mysqli_query($conn, $sql);
             z-index: 1;
             top: 0;
             left: 0;
-            background-color: #111;
+            background-color: #4caf50;
             overflow-x: hidden;
             padding-top: 20px;
         }
@@ -33,7 +33,7 @@ $allstudent = mysqli_query($conn, $sql);
             padding: 6px 6px 6px 32px;
             text-decoration: none;
             font-size: 25px;
-            color: #818181;
+            color: #ffffff;
             display: block;
         }
 
@@ -85,7 +85,7 @@ $allstudent = mysqli_query($conn, $sql);
         <a href="script/logout.php">Logout</a>
     </div>
     <div class="main">
-        <h2>All Id Card Request</h2>
+        <h2>ID CARD's REQUEST</h2>
 
         <div style="overflow-x:auto;">
             <table>

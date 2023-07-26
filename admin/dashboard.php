@@ -24,7 +24,7 @@ if (!isset($_SESSION['username'])) {
             z-index: 1;
             top: 0;
             left: 0;
-            background-color: #111;
+            background-color: #4caf50;
             overflow-x: hidden;
             padding-top: 20px;
         }
@@ -34,7 +34,7 @@ if (!isset($_SESSION['username'])) {
             padding: 6px 6px 6px 32px;
             text-decoration: none;
             font-size: 25px;
-            color: #818181;
+            color: #ffffff;
             display: block;
         }
 
@@ -69,7 +69,7 @@ if (!isset($_SESSION['username'])) {
             height: 100px;
             text-align: center;
             background-color: #4caf50;
-            color: #f1f1f1;
+            color: #ffffff;
             margin: 0 20px;
             font-size: 20px;
             display: flex;
