@@ -71,6 +71,10 @@ if (!isset($_SESSION['username'])) {
             background-color: #4caf50;
             color: #f1f1f1;
             margin: 0 20px;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
@@ -85,27 +89,43 @@ if (!isset($_SESSION['username'])) {
         <a href="script/logout.php">Logout</a>
     </div>
     <?php
-    // $current_matric = $_SESSION['matric'];
-    // $sql = "SELECT * FROM `admin` WHERE `username` = 'admin'";
-    // $getUser = mysqli_query($conn, $sql);
+    $sqlall = "SELECT COUNT(gender) FROM `user`";
+    $allgender = mysqli_query($conn, $sqlall);
+    $row =  mysqli_fetch_row($allgender);
 
-    // while ($row = mysqli_fetch_array($getUser)) :
-    //     $username = $row['username'];
+    $sqlmale = "SELECT COUNT(gender) FROM `user` WHERE `gender` = 'Male'";
+    $totalmale = mysqli_query($conn, $sqlmale);
+    $males =  mysqli_fetch_row($totalmale);
+
+    $sqlfemale = "SELECT COUNT(gender) FROM `user` WHERE `gender` = 'Female'";
+    $totalfemale = mysqli_query($conn, $sqlfemale);
+    $females =  mysqli_fetch_row($totalfemale);
+
+    $sqlrequest = "SELECT COUNT(request) FROM `user` WHERE `status` = 'notapproved'";
+    $totalrequest = mysqli_query($conn, $sqlrequest);
+    $request =  mysqli_fetch_row($totalrequest);
+
+    $sqlapprove = "SELECT COUNT(request) FROM `user` WHERE `status` = 'approved'";
+    $totalapprove = mysqli_query($conn, $sqlapprove);
+    $approve =  mysqli_fetch_row($totalapprove);
     ?>
     <div class="main">
         <h2>Welcome <span style="color:#4caf50"><?php echo $_SESSION['username'] ?> </span></h2>
         <div class="cards">
             <div class="card">
-
+                Total Students: <?php echo $row['0'] ?>
             </div>
             <div class="card">
-
+                Total Males: <?php echo $males['0'] ?>
             </div>
             <div class="card">
-
+                Total Females: <?php echo $females['0'] ?>
             </div>
             <div class="card">
-                
+                New request: <?php echo $request['0'] ?>
+            </div>
+            <div class="card">
+                Approved ID's: <?php echo $approve['0'] ?>
             </div>
         </div>
     </div>
