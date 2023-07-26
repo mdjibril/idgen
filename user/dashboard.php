@@ -146,7 +146,7 @@ if (!isset($_SESSION['matric'])) {
 
         .modal-header {
             padding: 2px 16px;
-            background-color: #5cb85c;
+            background-color: #007bff;
             color: white;
         }
 
@@ -156,7 +156,7 @@ if (!isset($_SESSION['matric'])) {
 
         .modal-footer {
             padding: 2px 16px;
-            background-color: #5cb85c;
+            background-color: #007bff;
             color: white;
         }
 
@@ -170,7 +170,7 @@ if (!isset($_SESSION['matric'])) {
 
         .icon {
             padding: 10px;
-            background: #4caf50;
+            background: #007bff;
             color: white;
             min-width: 50px;
             text-align: center;
@@ -184,12 +184,12 @@ if (!isset($_SESSION['matric'])) {
         }
 
         .input-field:focus {
-            border: 2px solid #4caf50;
+            border: 2px solid #007bff;
         }
 
         /* Set a style for the submit button */
         .btn {
-            background-color: #4caf50;
+            background-color: #007bff;
             color: white;
             padding: 15px 20px;
             border: none;
@@ -226,7 +226,7 @@ if (!isset($_SESSION['matric'])) {
     ?>
         <div class="main">
             <div class="info">
-                <h2>Welcome <span style="color:#4caf50"><?php echo $fullname ?> </span></h2>
+                <h2>Welcome <span style="color:#007bff"><?php echo $fullname ?> </span></h2>
                 <?php
                 if (empty($passport)) :
                     echo "<p>Please click on update to upload your passport</p>";
