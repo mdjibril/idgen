@@ -4,10 +4,9 @@
 You will need XAMPP on your system to run the app
 
 ## DATABASE SETUP
-Go to the admin panel of your PHPMyAdmin and create a database named "idcard_gen" without the qoute then navigate to the SQL tab
+Go to the admin panel of your PHPMyAdmin and create a database named "idcard_gen" without the quote then navigate to the SQL tab
 after navigation.
 1. Open up the db.sql file in the database folder, copy the content, and paste it to create the database tables
-
 
 
 ## SCREENSHOTS
