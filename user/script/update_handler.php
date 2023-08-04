@@ -13,8 +13,8 @@ if (isset($_POST['update'])) {
     $newfilename = $matric . '.' . end($extension);
     $temp_name = $_FILES['passport']['tmp_name'];
 
-    $creatfolder = "../../passport/";
-    $path = "../../passport/" . $newfilename;
+    $creatfolder = "../passport/";
+    $path = "../passport/" . $newfilename;
     $sql = "UPDATE `user` SET `fullname` = '$fullname', `matric_number` = '$matric', `gender` = '$gender', `passport` = '$path' WHERE `matric_number` = '$matric'";
 
     if (file_exists($creatfolder)) {
